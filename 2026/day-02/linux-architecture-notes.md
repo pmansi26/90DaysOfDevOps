@@ -22,7 +22,7 @@
   - The kernel creates a process  
   - The kernel assigns CPU time and memory  
   - The process ends when its work is completed
-  -   
+  
 ## Process States:-
 - **New** :- Process is just created.
 - **Running** :- Process is executing on CPU
