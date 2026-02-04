@@ -47,7 +47,7 @@ drwx------ 2 ubuntu ubuntu 4096 Feb  4 09:20 .ssh
 -rw-rw-r-- 1 ubuntu ubuntu  687 Feb  4 09:52 notes.txt
 ```
 ### Part 2: Scenario-Based Practice 
-Scenario 1: Service Not Starting
+## Scenario 1: Service Not Starting
 ``` bash
 A web application service called 'myapp' failed to start after a server reboot.
 What commands would you run to diagnose the issue?
@@ -90,7 +90,7 @@ Why:
 - Configuration errors are a common cause of startup failure
 - Reboot can expose misconfigurations (missing env vars, paths, etc.)
 
-Scenario 2: High CPU Usage
+## Scenario 2: High CPU Usage
 ``` bash
 Your manager reports that the application server is slow.
 You SSH into the server. What commands would you run to identify
@@ -116,7 +116,8 @@ Step 3 :- Use ps for a quick snapshot
 ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head
 ```
 - Lists processes sorted by CPU usage (highest first)
-Scenario 3: Finding Service Logs
+  
+## Scenario 3: Finding Service Logs
 ``` bash
 A developer asks: "Where are the logs for the 'docker' service?"
 The service is managed by systemd.
@@ -134,7 +135,7 @@ Step 3 :- Follow ssh logs in real time
 ``` bash
 journalctl -u ssh -f
 ```
-Scenario 4: File Permissions Issue
+## Scenario 4: File Permissions Issue
 ``` bash
 A script at /home/user/backup.sh is not executing.
 When you run it: ./backup.sh
