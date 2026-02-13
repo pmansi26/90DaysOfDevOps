@@ -93,4 +93,31 @@ Enter a file to check : hello.txt
 file does'nt exists
 ```
 ## Task-5
+#### Script 
+``` bash
+#!/bin/bash
+read -p "Enter a service name:- " SERVICE
+read -p "Do you want to check status of the $SERVICE [y/n]?" STATUS
+if [ "$STATUS" = "y" ] || [ "$STATUS" = "Y" ]; then
+        sudo systemctl status --no-pager "$SERVICE" > /dev/null
+        if systemctl is-active "$SERVICE" > /dev/null ; then
+                echo "$SERVICE is active"
+        else
+                echo "$SERVICE is inactive"
+        fi
+elif [ "$STATUS" = "n" ] || [ "$STATUS" = "N" ] ; then
+        echo "skipped"
+fi
+
+#output
+./server_check.sh
+Enter a service name:- nginx
+Do you want to check status of the nginx [y/n]?y
+nginx is active
+./server_check.sh
+Enter a service name:- docker
+Do you want to check status of the docker [y/n]?n
+skipped
+```
+
 
