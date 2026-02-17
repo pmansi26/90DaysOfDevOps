@@ -87,6 +87,36 @@ echo "Script ended"
 Script starting
 ls: cannot access '/home/mydirectory': No such file or directory
 ```
+## Task-4
+``` bash
+#!/bin/bash
+
+myfunc() {
+    local scope="this is local variable"
+    echo "Inside function: $scope"
+}
+
+myfunc
+echo "----------------------------------------------"
+echo "Calling variable outside of the function"
+
+if [[ -z "${scope+x}" ]]; then
+    echo "scope is NOT accessible outside the function (not set)"
+else
+    echo "scope leaked outside: $scope"
+fi
+
+#output
+./local.sh
+Inside function: this is local variable
+----------------------------------------------
+Calling variable outside of the function
+scope is NOT accessible outside the function (not set)
+```
+
+
+
+
 
 
 
