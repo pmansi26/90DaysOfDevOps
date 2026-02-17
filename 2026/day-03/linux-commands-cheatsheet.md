@@ -63,6 +63,11 @@
 - `clear` → Clear terminal screen  
 
 ---
+## Important for troubleshooting
+### listing top 5 processes with highest cpu usage
+-`ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 6`
+### Listing top 5 disk usage
+-`du -xh --max-depth=1 / 2>/dev/null | sort -hr | head -n 5`
 
 
 ---
