@@ -113,6 +113,104 @@ Inside function: this is local variable
 Calling variable outside of the function
 scope is NOT accessible outside the function (not set)
 ```
+## Task-5
+``` bash
+#!/bin/bash
+set -euo pipefail
+
+print_header(){
+        local title="$1"
+        echo "=========================================================="
+        echo "$title"
+        echo "==========================================================="
+}
+
+os_info(){
+        print_header "Hostname and OS info"
+        echo "Hostname:$(hostname)"
+        if [[ -f /etc/os-release ]] ; then
+               source /etc/os-release
+                echo "OS info   :${PRETTY_NAME}"
+        else
+                echo "OS info   :$(uname -srm)"
+        fi
+        echo "kernel    :$(uname -r)"
+        echo
+}
+
+print_uptime(){
+        print_header "Uptime info"
+        echo "$(uptime -p)"
+        echo "since $(uptime -s)"
+        echo
+}
+
+print_disk_usage(){
+        print_header "Disk usage (top 5 by size)"
+        du -xh --max-depth=1 / 2>/dev/null | sort -hr | head -n 5 || true
+        echo
+}
+
+print_memory_usage(){
+        print_header "Memory usage"
+        free -h
+        echo
+}
+print_cpu_consuming_processes(){
+        print_header "Top 5 CPU-consuming processes"
+        ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 6
+}
+
+main(){
+        os_info
+        print_uptime
+        print_disk_usage
+        print_memory_usage
+        print_cpu_consuming_processes
+}
+main
+
+#output
+==========================================================
+Hostname and OS info
+===========================================================
+Hostname:ip-172-31-18-96
+OS info :Ubuntu 24.04.3 LTS
+kernel  :6.14.0-1018-aws
+
+==========================================================
+Uptime info
+===========================================================
+up 1 hour, 56 minutes
+since 2026-02-17 06:39:35
+
+==========================================================
+Disk usage (top 5 by size)
+===========================================================
+2.2G    /
+1.5G    /usr
+707M    /var
+7.1M    /etc
+96K     /home
+
+==========================================================
+Memory usage
+===========================================================
+               total        used        free      shared  buff/cache   available
+Mem:           914Mi       413Mi       161Mi       3.0Mi       542Mi       500Mi
+Swap:             0B          0B          0B
+
+==========================================================
+Top 5 CPU-consuming processes
+===========================================================
+    PID USER     %CPU %MEM COMMAND
+   1099 ubuntu    0.1  0.4 sshd
+      1 root      0.0  1.5 systemd
+   2333 root      0.0  3.3 snapd
+     12 root      0.0  0.0 kworker/0:1-events
+     61 root      0.0  0.0 kworker/u8:3-events_unbound
+
+
 
 
 
