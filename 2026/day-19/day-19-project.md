@@ -37,6 +37,11 @@ fi
 # -------- Output --------
 echo "Files compressed: $compress_count"
 echo "Files deleted: $delete_count"
+
+#Output
+ubuntu@ip-172-31-21-107:~$ ./logrotate.sh testlogs
+Files compressed: 0
+Files deleted: 0
 ```
 # Backup
 ``` bash
@@ -88,4 +93,66 @@ del_backup(){
 }
 
 del_backup
+
+#Output
+./backup.sh
+usage = ./backup.sh <path to source directory> <path to backup directory>
+./backup.sh data backups
+backup generated successfully for 2026-02-22-15-59-09
+backup created : backups/backup_2026-02-22-15-59-09.tar.gz
+Archive size : 4.0K
 ```
+# Crontab entries
+``` bash
+0 2 * * * /home/ubuntu/logrotate.sh /home/ubuntu/testlogs
+0 3 * * 7 /home/ubuntu/backup.sh /home/ubuntu/data /home/ubuntu/backups
+*/5 * * * * /home/ubuntu/healthcheck.sh
+```
+## healthcheck.sh
+``` bash
+#!/bin/bash
+
+URL="http://localhost:80"
+
+status=$(curl -s -o /dev/null -w "%{http_code}" $URL)
+
+if [ "$status" -eq 200 ]; then
+        echo "Application is Healthy"
+else
+        echo "Application is Down"
+fi
+```
+# Maintenance Script
+``` bash
+#!/bin/bash
+
+LOG_FILE="/var/log/maintenance.log"
+
+log(){
+        echo "$(date '+%Y-%m-%d %H:%m:%S') : $1" | tee -a "$LOG_FILE"
+}
+
+log "Maintenance Started"
+
+#calling logrotation script
+/home/ubuntu/logrotaion.sh /home/ubuntu/testlogs >> "$LOG_FILE" 2>&1
+log "Log rotation completed"
+
+#calling backup server script
+/home/ubunut/backup.sh /home/ubuntu/data /home/ubuntu/backups >> "LOG_FILE" 2>&1
+log "Backup completed"
+
+log "Maintenance finished"
+
+#Ouput
+./maintenance.sh
+2026-02-22 16:02:02 : Maintenance Started
+2026-02-22 16:02:02 : Log rotation completed
+2026-02-22 16:02:02 : Backup completed
+2026-02-22 16:02:02 : Maintenance finished
+
+#crontab entry
+0 1 * * * /home/ubunut/maintenance.sh
+```
+
+
