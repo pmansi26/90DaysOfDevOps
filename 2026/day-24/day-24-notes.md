@@ -64,3 +64,29 @@
 - You lose detailed commit history from the feature branch
 - It becomes harder to see step-by-step changes
 - Debugging specific commits later can be difficult
+# Task 4
+## 1.What is the difference between git stash pop and git stash apply?
+- git stash pop restores the stashed changes and removes that stash entry from the stash list
+- git stash apply restores the stashed changes but keeps the stash entry in the list so you can reuse it later
+-  pop = apply + delete
+- pply = apply only
+## 2.When would you use stash in a real-world workflow?
+- When you need to switch branches but your work is incomplete
+- When pulling latest changes without committing half-done work
+- During debugging or hotfix tasks where you temporarily pause current work
+- When testing something quickly and you don’t want a temporary commit
+# Task 4
+## 1.What does cherry-pick do?
+- Cherry-pick copies a specific commit from one branch and applies it to another branch
+- It brings only selected changes instead of merging the entire branch
+- A new commit is created with a different commit ID
+## 2.When would you use cherry-pick in a real project?
+-To apply a bug fix from a feature branch to production quickly
+-To backport fixes to older release branches
+## 3.When you need only one change from another branch without merging everything
+- During hotfix scenarios
+- What can go wrong with cherry-picking?
+- It can cause merge conflicts if the same code was changed elsewhere
+- Duplicate commits may appear in history
+- Important context from the original branch may be missed
+- Overusing cherry-pick can make history confusing
