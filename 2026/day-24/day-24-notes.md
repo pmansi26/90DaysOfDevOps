@@ -75,7 +75,7 @@
 - When pulling latest changes without committing half-done work
 - During debugging or hotfix tasks where you temporarily pause current work
 - When testing something quickly and you don’t want a temporary commit
-# Task 4
+# Task 5
 ## 1.What does cherry-pick do?
 - Cherry-pick copies a specific commit from one branch and applies it to another branch
 - It brings only selected changes instead of merging the entire branch
