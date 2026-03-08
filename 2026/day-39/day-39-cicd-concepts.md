@@ -59,5 +59,5 @@ A developer pushes code → CI tests pass → pipeline automatically deploys the
 - Runner — The machine or server that executes the pipeline jobs.
 - Artifact — The output produced by a job, such as build files, packages, or Docker images.
 
-#Task-4
+# Task-4
 ![CI/CD image](pipeline.png)
