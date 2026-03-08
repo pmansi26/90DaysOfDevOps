@@ -1,0 +1,11 @@
+name: Mansi
+role: Devops Engineer
+expirence_years: 0.8
+learning: true
+tools:
+    - Linux
+    - Git
+    - GitHub
+    - Docker
+    - Github actions
+hobbies: ["Singing" , "Reading Books" , "Rideing", "Learning new tools"]
