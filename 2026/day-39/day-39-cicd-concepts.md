@@ -61,3 +61,36 @@ A developer pushes code → CI tests pass → pipeline automatically deploys the
 
 # Task-4
 ![CI/CD image](pipeline.png)
+
+# Task-5
+## GitHub Actions Workflow Analysis – facebook/react
+### 1. What triggers it?
+
+This workflow is triggered when a pull request is opened or marked ready for review.
+
+It only runs if the pull request modifies:
+
+files inside the compiler/ folder
+
+workflow files starting with compiler_ inside .github/workflows/.
+
+## 2. How many jobs does it have?
+
+The workflow has 3 jobs:
+
+- check_access
+- check_maintainer
+- notify
+
+## 3. What does it do? (Best guess)
+
+This workflow checks who created the pull request and whether they are allowed contributors.
+
+- check_access
+  Checks if the PR author is a member or collaborator of the repository.
+
+- check_maintainer
+  Verifies whether the contributor is part of the React core team or maintainer.
+
+- notify
+  If the PR is from a core team member, it sends a notification to a Discord channel using a webhook.
