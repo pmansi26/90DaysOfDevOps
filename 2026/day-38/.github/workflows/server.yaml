@@ -1,0 +1,26 @@
+server:
+    name: linux_server
+    ip: 54.160.38.203
+    port: [22 , 80]
+    
+database:
+    host: localhost
+    name: test_db
+    credentials:
+        user: mansi
+        password: test@123
+        
+    startup_script: |
+        #!/bin/bash
+        # Script to install nginx on the server
+        sudo apt-get update
+        sudo apt install nginx
+        systemctl start nginx
+        systemctl enable nginx
+        
+  startup_script2: >
+        # this script is written using >
+        echo "This is a single logical line of script,
+        despite spanning multiple lines in the YAML file"
+        echo "All internal newlines will be converted to spaces"
+        
