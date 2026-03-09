@@ -49,4 +49,69 @@ jobs:
       - name: prints inputs
         run: echo "${{ github.event.inputs.environment }}"
 ```
+# Task-4
+### matrix.yaml
+``` bash
+---
+name: Matrix
+on:
+  push:
+    branches:
+      - main
+jobs:
+  python_version:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+         python-version: [ "3.10" , "3.11" , "3.12" ]
+         os: [ "windows-latest" , "ubuntu-latest" ]
+    steps:
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: check python version
+        run: python --version
+      - name: check operating system
+        run : echo "Running on ${{ runner.os }}"
+```
+- Total number of jobs after adding os :- 6
+# Task-5
+``` bash
+---
+name: Matrix
+on:
+  push:
+    branches:
+      - main
+jobs:
+  python_version:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+         python-version: [ "3.10" , "3.11" , "3.12" ]
+         os: [ "windows-latest" , "ubuntu-latest" ]
+         exclude:
+           - os: windows-latest
+             python-version: "3.10"
+    steps:
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: check python version
+        run: python --version
+      - name: check operating system
+        run : echo "Running on ${{ runner.os }}"
+```
+
+**fail-fast in GitHub Actions (Matrix Strategy)**
+
+**fail-fast: true (default)**
+If any job in the matrix fails, GitHub **immediately cancels the remaining running or queued matrix jobs** to save time and resources.
+
+**fail-fast: false**
+Even if one job fails, **all other matrix jobs continue running** until they finish.
+
 
