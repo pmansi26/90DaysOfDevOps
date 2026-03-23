@@ -49,7 +49,7 @@ Docker works well for running containers but cannot manage them at large scale.
 
 # Task 2
 ## Kubernetes Architecture
-![K8s__architecture](K8s_arch)
+![K8s__architecture](K8s_arch.png)
 ## What happens when you run kubectl apply -f pod.yaml? Trace the request through each component.
 # 1. kubectl (Client)
 - Reads the pod.yaml file
@@ -104,3 +104,5 @@ Docker works well for running containers but cannot manage them at large scale.
   - User credentials (authentication)
   - Context (which cluster + user to use)
 - It is stored in :- ~/.kube/config
+## Cluster screenshot
+![Cluster_screenshot](cluster.png)
