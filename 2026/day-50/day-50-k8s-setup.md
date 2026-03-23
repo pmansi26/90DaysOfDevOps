@@ -96,3 +96,11 @@ Docker works well for running containers but cannot manage them at large scale.
 - Recovery:
   - Kubernetes Controller Manager recreates Pods on other healthy nodes
   - Kubernetes Scheduler assigns new nodes
+# Task 6
+## What is a kubeconfig? Where is it stored on your machine?
+- A kubeconfig is a configuration file used by Kubernetes tools (like kubectl) to connect and interact with a Kubernetes cluster.
+- It contains all the details needed to access a cluster:
+  - Cluster information (API server address)
+  - User credentials (authentication)
+  - Context (which cluster + user to use)
+- It is stored in :- ~/.kube/config
