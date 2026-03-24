@@ -82,3 +82,5 @@ A standalone Pod is a Pod that is not managed by any controller (such as Deploym
 - Standalone Pods are temporary in nature
 - If deleted, they are permanently gone
 - There is no self-healing mechanism
+# Screenshot of pods running
+![Running Pod](pod.png)
