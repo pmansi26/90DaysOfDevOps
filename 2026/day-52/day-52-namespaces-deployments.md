@@ -114,4 +114,5 @@ spec:
 - Kubernetes keeps a history of Deployment revisions
 - You can switch back to the previous working version
 # Screenshot of pods and deployment
+![Deployment](deployment.png)
 
