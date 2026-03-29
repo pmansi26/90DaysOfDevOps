@@ -131,3 +131,4 @@ kubectl get endpoints
 kubectl describe endpoints <service-name>
 ```
 # Screenshot of your services and the test output
+![Services](svc.png)
