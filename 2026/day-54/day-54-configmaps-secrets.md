@@ -42,4 +42,5 @@ Encryption, on the other hand, uses a secret key to secure data so that only aut
 - Pod restart is required to get updated values
 
 # Screenshot of configmap , secrets , pods running
+![ConfigMap](configmap.png)
 
